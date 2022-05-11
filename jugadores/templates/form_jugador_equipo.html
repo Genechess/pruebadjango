@@ -1,0 +1,26 @@
+<h1> Alta de jugador equipo </h1>
+
+<form method="POST">{% csrf_token %}
+    <h2> Jugador </h2>
+    <p>
+        nombre: {{form.nombre}}
+    </p>
+    <p>
+        nick: {{form.nick}}
+    </p>
+    <p>
+        correo: {{form.correo}}
+    </p>
+    <p>
+        password: {{form.password}}
+    </p>
+    <h2> Equipo </h2>
+    <p>
+        Equipo: {{form.equipo}}
+    </p>
+    <p>
+        Equipo (nombre corto): {{form.eq}}
+    </p>
+    
+    <button type="submit"> Agregar</button>
+</form>

@@ -1,0 +1,16 @@
+<h1> Lista de Jugadores por palabra clave </h1>
+
+<form method = 'GET'>
+    <input type = 'text' id = 'keyword' name = 'keyw' placeholder = 'Ingrese la palabra de búsqueda:'>
+    <button type = 'submit'>Buscar</button>
+</form>
+
+<ul>
+    {% for elemento in lista_ju_x_key %}
+        <li>
+            {{elemento.nick}}
+            {{elemento.correo}}
+            {{elemento.equipo}}
+        </li>
+    {% endfor %}
+</ul>

@@ -1,0 +1,36 @@
+<div class="title-bar" data-responsive-toggle="example-menu" data-hide-for="medium">
+    <button class="menu-icon" type="button" data-toggle="example-menu"></button>
+    <div class="title-bar-title">Menu</div>
+  </div>
+  
+  <div class="top-bar" id="example-menu">
+    <div class="top-bar-left">
+      <ul class="dropdown menu" data-dropdown-menu>
+        <li class="menu-text">Batiquiniela</li>
+        <li>
+          <a href="{% url 'jugadores_app:home' %}">Jugadores</a>
+          <ul class="menu vertical">
+            <li><a href="{% url 'jugadores_app:todos_los_jugadores' %}">Consultas</a></li>
+            <li><a href="{% url 'jugadores_app:jugadores_admin' %}">Admin</a></li>
+            <li><a href="{% url 'jugadores_app:alta' %}">Altas</a></li>
+            <li><a href="#">Bajas</a></li>
+          </ul>
+        </li>
+        <li>
+            <a href="#">Equipos</a>
+            <ul class="menu vertical">
+              <li><a href="{% url 'equipos_app:lista_equipos' %}">Consultas</a></li>
+              <li><a href="{% url 'equipos_app:alta' %}">Altas</a></li>
+              <li><a href="#">Bajas</a></li>
+            </ul>
+          </li>
+        <li><a href="#">Login</a></li>
+      </ul>
+    </div>
+    <div class="top-bar-right">
+      <ul class="menu">
+        <li><input type="search" placeholder="Search"></li>
+        <li><button type="button" class="button">Search</button></li>
+      </ul>
+    </div>
+  </div>

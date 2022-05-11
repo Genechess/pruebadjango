@@ -1,0 +1,69 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Batiquiniela
+{% endblock titulo %}
+
+{% block cuerpo %}
+    {% include 'includes/header.html' %}
+
+    <div class='grid-container center'>
+        <div class='grid-x'>
+            <h1 class='cell' align='center'>
+                Lista de equipos
+            </h1>
+        </div>     
+        <hr>
+        <br>
+        <div class='grid-x'>
+            <table class='hover'>
+                <thead>
+                    <tr class='grid-x'>
+                      <th  class='cell large-2 text-center'>Id</th>
+                      <th  class='cell large-4 text-center'>Nombre</th>
+                      <th  class='cell large-4 text-center'>Logo</th>
+                      <th  class='cell large-2 text-center'>Ver</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for elemento in lista_eq %}
+                    <tr class='grid-x'>
+                        <td class='cell large-2' align='center'>{{elemento.id}}</td>
+                        <td class='cell large-4' align='center'>{{elemento.nombre}}</td>
+                        <td class='cell large-4' align='center'><img src="/media/{{elemento.logo}}" ></td>
+                        <td class='cell large-2' align='center'>
+                            <a class="clear button secondary" 
+                            href={% static 'jugadores_app:jugadores-x-equipo' elemento.nombre_corto %}
+                            > Ver fans!</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>  
+        </div>
+        <div class='grid-x'>
+            {% if is_paginated %}
+                <nav aria-label="Pagination" class="cell">
+                    <ul class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">ant</a></li>
+                        {% endif %}
+                        {% for pag in paginator.page_range %}
+                            {% if pag == page_obj.number %}
+                            <li class="current"><span class="show-for-sr">You're on page</span>{{pag}}</li>
+                            {%else%}
+                                <li><a href="?page={{pag}}">{{pag}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}" class="success">sig</a></li>
+                        {% endif %}    
+               
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>    
+    </div>
+
+{% endblock cuerpo %}

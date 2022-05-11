@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Batiquiniela
+{% endblock titulo %}
+
+{% block cuerpo %}
+    {% include 'includes/header.html' %}
+
+    <div class='grid-container center'>
+        <div class='grid-x'>
+            <h1 class='cell' align='center'>
+                Lista de jugadores
+            </h1>
+        </div>
+        <form class='grid-x' method="GET">{% csrf_token %}
+            <div class='cell large-4'> </div>
+            <div class='cell large-6' align='center'>
+                <input type="text" id="buscar" name='buscar' placeholder="buscar jugador">
+            </div>
+            <div class='cell large-1' align='center'>
+                <button type = 'submit' class="primary button">Buscar</button> 
+            </div>
+        </form>     
+        <hr>
+        <br>
+        <div class='grid-x'>
+            <table class='hover'>
+                <thead>
+                    <tr class='grid-x'>
+                      <th  class='cell large-1 text-center'>Id</th>
+                      <th  class='cell large-3 text-center'>Apodo</th>
+                      <th  class='cell large-5 text-center'>Nombre</th>
+                      <th  class='cell large-1 text-center'>más...</th>
+                      <th  class='cell large-1 text-center'>más...</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% for elemento in lista_ju %}
+                    <tr class='grid-x'>
+                        <td class='cell large-1' align='center'>{{elemento.id}}</td>
+                        <td class='cell large-3' align='center'>{{elemento.nick}}</td>
+                        <td class='cell large-5' align='center'>{{elemento.nombre}}</td>
+                        <td class='cell large-1' align='center'>
+                            <a class="clear button secondary" href={% url 'jugadores_app:actualizar' elemento.id %}>Editar</a>
+                        </td>
+                        <td class='cell large-1' align='center'>
+                            <a class="clear button alert" href={% url 'jugadores_app:borrar' elemento.id %}>Eliminar</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>  
+        </div>
+        <div class='grid-x'>
+            {% if is_paginated %}
+                <nav aria-label="Pagination" class="cell">
+                    <ul class="pagination">
+
+                        {% if page_obj.has_previous %}
+                            <li><a href="?page={{ page_obj.previous_page_number }}">ant</a></li>
+                        {% endif %}
+                        {% for pag in paginator.page_range %}
+                            {% if pag == page_obj.number %}
+                            <li class="current"><span class="show-for-sr">You're on page</span>{{pag}}</li>
+                            {%else%}
+                                <li><a href="?page={{pag}}">{{pag}}</a></li>
+                            {% endif %}
+                        {% endfor %}
+                        {% if page_obj.has_next %}
+                            <li><a href="?page={{ page_obj.next_page_number }}" class="success">sig</a></li>
+                        {% endif %}    
+               
+                    </ul>
+                </nav>
+            {% endif %}
+        </div>    
+    </div>
+
+{% endblock cuerpo %}
+

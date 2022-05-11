@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Batiquiniela
+{% endblock titulo %}
+
+{% block cuerpo %}
+    {% include 'includes/header.html' %}
+
+
+        <h1 class='fondo-azul'> Jugadores {{titulo_param}} </h1>
+
+        <ul class="fondo-verde">
+            {{object.correo}}
+        </ul>
+{% endblock cuerpo%}

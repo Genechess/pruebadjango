@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block titulo %}
+    Batiquiniela
+{% endblock titulo %}
+
+{% block cuerpo %}
+    {% include 'includes/header.html' %}
+
+    <div class='grid-container center'>
+        <div class='grid-x'>
+            <h1 class='cell' align='center'>
+                Editar jugadores
+            </h1>
+        </div>
+        <form method="POST">{% csrf_token %}
+            {{form.as_p}}
+            <button class="submit success button">Guardar</button>
+        </form>
+    </div>
+
+{% endblock cuerpo %}
