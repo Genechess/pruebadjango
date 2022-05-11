@@ -16,11 +16,6 @@ from pathlib import Path
 BASE_DIR = Path(__file__).resolve().parent.parent
 
 
-# Quick-start development settings - unsuitable for production
-# See https://docs.djangoproject.com/en/4.0/howto/deployment/checklist/
-
-# SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-yn7$b72!vs!pidcwb%i(d6sefhdl@--+c-aksohhg$%ga6#l$s'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -52,6 +47,8 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'batiquiniela.urls'
+
+
 
 TEMPLATES = [
     {
@@ -126,6 +123,7 @@ STATICFILES_DIRS = [
     BASE_DIR / 'batiquiniela/static/',
     BASE_DIR / 'batiquiniela/static/css/',
     BASE_DIR / 'batiquiniela/static/js/',
+    
 ]
 
 MEDIA_URL = 'media/'
